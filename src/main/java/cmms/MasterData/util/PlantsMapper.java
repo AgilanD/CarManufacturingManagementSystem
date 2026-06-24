@@ -27,6 +27,12 @@ public class PlantsMapper {
 
         return PlantsResponseDto.builder()
                 .id(plants.getId())
+
+                .createdBy(plants.getCreatedBy())
+                .createdAt(plants.getCreatedAt())
+                .lastModifiedBy(plants.getLastModifiedBy())
+                .lastModifiedAt(plants.getLastModifiedAt())
+
                 .isActive(plants.getIsActive())
                 .name(plants.getName())
                 .capacityPerDay(plants.getCapacityPerDay())
