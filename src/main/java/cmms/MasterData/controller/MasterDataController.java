@@ -67,7 +67,7 @@ public class MasterDataController {
         return "SuccessFully SuppliersAdded";
     }
 
-    @GetMapping("/GetById")
+    @GetMapping("/GetById/{id}")
     public Suppliers GetSupplierById(@RequestParam Long id){
         return supplierService.GetBySuppliersId(id);
     }

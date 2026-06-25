@@ -27,6 +27,12 @@ public class CarModuleMapper {
 
         return CarModuleResponseDto.builder()
                 .id(carModule.getId())
+
+                .createdBy(carModule.getCreatedBy())
+                .createdAt(carModule.getCreatedAt())
+                .lastModifiedAt(carModule.getLastModifiedAt())
+                .lastModifiedBy(carModule.getLastModifiedBy())
+
                 .basePrice(carModule.getBasePrice())
                 .colorOptions(carModule.getColorOptions())
                 .fuelType(carModule.getFuelType())
