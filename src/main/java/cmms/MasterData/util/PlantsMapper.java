@@ -6,7 +6,9 @@ import cmms.MasterData.Dto.PlantsRequestDto;
 import cmms.MasterData.Dto.PlantsResponseDto;
 import cmms.MasterData.entity.CarModule;
 import cmms.MasterData.entity.Plants;
+import org.springframework.stereotype.Component;
 
+@Component
 public class PlantsMapper {
 
     public Plants PlantsRequestDtoToPlants(PlantsRequestDto PlantsRequestDto){

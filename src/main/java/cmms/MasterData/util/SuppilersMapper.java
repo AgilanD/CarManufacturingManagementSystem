@@ -3,7 +3,9 @@ package cmms.MasterData.util;
 import cmms.MasterData.Dto.SupplierRequestDto;
 import cmms.MasterData.Dto.SupplierResponseDto;
 import cmms.MasterData.entity.Suppliers;
+import org.springframework.stereotype.Component;
 
+@Component
 public class SuppilersMapper {
 
     public Suppliers createSupplier(SupplierRequestDto requestDto) {

@@ -68,6 +68,7 @@
 
 package cmms.MasterData.entity;
 
+import cmms.MasterData.security.UserContext;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Max;
@@ -128,18 +129,35 @@ public class Suppliers {
 
     @CreatedDate
     @Column(name = "created_at", nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.parse("2026-06-23T19:54:30");
+    private LocalDateTime createdAt;
 
     @CreatedBy
     @Column(name = "created_by", nullable = false)
-    private Long createdBy = 1L;
+    private Long createdBy;
 
     @LastModifiedDate
     @Column(name = "last_modified_at", nullable = false)
-    private LocalDateTime lastModifiedAt = LocalDateTime.parse("2026-06-23T19:54:30");
+    private LocalDateTime lastModifiedAt;
 
     @LastModifiedBy
     @Column(name = "last_modified_by", nullable = false)
-    private Long lastModifiedBy = 1L;
+    private Long lastModifiedBy;
+
+
+    @PrePersist
+    protected void onCreate() {
+        this.createdAt = LocalDateTime.now();
+        this.lastModifiedAt = LocalDateTime.now();
+
+        this.createdBy = UserContext.getUserId();
+        this.lastModifiedBy = UserContext.getUserId();
+    }
+
+    @PreUpdate
+    protected void onUpdate() {
+        this.lastModifiedAt = LocalDateTime.now();
+        this.lastModifiedBy = UserContext.getUserId();
+    }
+
 
 }
