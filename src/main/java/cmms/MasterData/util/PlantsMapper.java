@@ -9,7 +9,7 @@ import cmms.MasterData.entity.Plants;
 
 public class PlantsMapper {
 
-    public static Plants PlantsRequestDtoToPlants(PlantsRequestDto PlantsRequestDto){
+    public Plants PlantsRequestDtoToPlants(PlantsRequestDto PlantsRequestDto){
 
         if(PlantsRequestDto == null ) return null;
 
@@ -21,7 +21,7 @@ public class PlantsMapper {
                 .build();
     }
 
-    public static PlantsResponseDto PlantsToPlantsResponseDto(Plants plants){
+    public PlantsResponseDto PlantsToPlantsResponseDto(Plants plants){
 
         if (plants == null) return null;
 

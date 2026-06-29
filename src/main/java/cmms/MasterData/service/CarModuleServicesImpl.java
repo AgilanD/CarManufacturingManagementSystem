@@ -16,6 +16,8 @@ public class CarModuleServicesImpl implements CarModuleService{
 
     private final CarRepository carRepository;
 
+    private final CarModuleMapper carModuleMapper;
+
     public List<CarModule> GetAllCarModule(){
         return carRepository.findAll();
     }
@@ -28,9 +30,9 @@ public class CarModuleServicesImpl implements CarModuleService{
     public CarModuleResponseDto CreateCarModule (CarModuleRequestDto carModuleRequestDto){
 
 
-        CarModule car = AddCar(CarModuleMapper.CarModuleRequesttoCarModule(carModuleRequestDto));
+        CarModule car = AddCar(carModuleMapper.CarModuleRequesttoCarModule(carModuleRequestDto));
 
-        return CarModuleMapper.CustomerToCustomerResponseDto(car);
+        return carModuleMapper.CustomerToCustomerResponseDto(car);
 
     }
 

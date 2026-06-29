@@ -6,7 +6,7 @@ import cmms.MasterData.entity.Suppliers;
 
 public class SuppilersMapper {
 
-    public  static Suppliers createSupplier(SupplierRequestDto requestDto) {
+    public Suppliers createSupplier(SupplierRequestDto requestDto) {
 
         return Suppliers.builder()
                 .supplierName(requestDto.getSupplierName())
@@ -19,7 +19,7 @@ public class SuppilersMapper {
 
     }
 
-    public  static SupplierResponseDto mapToResponseDto(Suppliers supplier) {
+    public  SupplierResponseDto mapToResponseDto(Suppliers supplier) {
 
         return SupplierResponseDto.builder()
                 .id(supplier.getId())

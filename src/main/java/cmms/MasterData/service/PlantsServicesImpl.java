@@ -19,6 +19,7 @@ import java.util.List;
 public class PlantsServicesImpl implements PlantsService{
 
    private final PlantRepository plantRepository;
+   private final PlantsMapper plantsMapper;
 
    public List<Plants> GetPlants(){
       return plantRepository.findAll();
@@ -31,9 +32,9 @@ public class PlantsServicesImpl implements PlantsService{
    public PlantsResponseDto CreatePlants (PlantsRequestDto PlantsRequestDto){
 
 
-      Plants plants = SaveAll(PlantsMapper.PlantsRequestDtoToPlants(PlantsRequestDto));
+      Plants plants = SaveAll(plantsMapper.PlantsRequestDtoToPlants(PlantsRequestDto));
 
-      return PlantsMapper.PlantsToPlantsResponseDto(plants);
+      return plantsMapper.PlantsToPlantsResponseDto(plants);
 
    }
 

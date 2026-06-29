@@ -6,7 +6,7 @@ import cmms.MasterData.entity.CarModule;
 
 public class CarModuleMapper {
 
-    public static CarModule CarModuleRequesttoCarModule(CarModuleRequestDto carModuleRequestDto){
+    public  CarModule CarModuleRequesttoCarModule(CarModuleRequestDto carModuleRequestDto){
 
         if(carModuleRequestDto == null ) return null;
 
@@ -21,7 +21,7 @@ public class CarModuleMapper {
 
     }
 
-    public static CarModuleResponseDto CustomerToCustomerResponseDto(CarModule carModule){
+    public  CarModuleResponseDto CustomerToCustomerResponseDto(CarModule carModule){
 
         if (carModule == null) return null;
 

@@ -22,6 +22,7 @@ public class SuppilerServiceImpl implements SuppilerService{
 
 
    private final SuppliersRepository suppliersRepository;
+   private final SuppilersMapper suppliersMapper;
 
 
    public List<Suppliers> GetAllSuppliers(){
@@ -40,9 +41,9 @@ public class SuppilerServiceImpl implements SuppilerService{
 
     public SupplierResponseDto CreateSuppliers (SupplierRequestDto suppliersRequestDto){
 
-        Suppliers supply = SaveAll(SuppilersMapper.createSupplier(suppliersRequestDto));
+        Suppliers supply = SaveAll(suppliersMapper.createSupplier(suppliersRequestDto));
 
-        return SuppilersMapper.mapToResponseDto(supply);
+        return suppliersMapper.mapToResponseDto(supply);
 
     }
 
