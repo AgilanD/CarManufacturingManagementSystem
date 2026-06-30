@@ -1,5 +1,6 @@
 package cmms.MasterData.security;
 
+
 public class UserContext {
 
     private static final ThreadLocal<Long> currentUserId = new ThreadLocal<>();
@@ -15,4 +16,5 @@ public class UserContext {
     public static void clear() {
         currentUserId.remove();
     }
+
 }

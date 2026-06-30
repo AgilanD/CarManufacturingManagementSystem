@@ -28,7 +28,7 @@ public class MasterDataController {
     private final SuppilerService supplierService;
 
     @GetMapping("/Checking")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public String Checkings(){
         return "Checking From the MasterData";
     }
@@ -49,7 +49,7 @@ public class MasterDataController {
 
 
     @GetMapping("/GetAllPlants")
-    @PreAuthorize("hasRole('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN')")
     public List<Plants> GetAllPlants(){
         return plantsservice.GetPlants();
     }
@@ -59,8 +59,6 @@ public class MasterDataController {
     public PlantsResponseDto addCustomer(@RequestBody PlantsRequestDto plantsRequestDto){
         return plantsservice.CreatePlants(plantsRequestDto);
     }
-
-
 
     @GetMapping("/GetAllSuppliers")
     @PreAuthorize("hasRole('ADMIN')")

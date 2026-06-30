@@ -55,7 +55,6 @@ public class CarModule {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
-
     @CreatedDate
     @Column(name = "created_at", nullable = false, columnDefinition = "TIMESTAMP DEFAULT '2026-06-23 19:54:30'")
     private LocalDateTime createdAt;
@@ -89,8 +88,6 @@ public class CarModule {
         this.lastModifiedAt = LocalDateTime.now();
         this.lastModifiedBy = UserContext.getUserId();
     }
-
-
 
     public enum FuelType {
         PETROL, DIESEL, ELECTRIC, HYBRID

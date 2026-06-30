@@ -126,23 +126,21 @@ public class Suppliers {
     @Column(name = "is_active", nullable = false)
     private Boolean isActive = true;
 
-
     @CreatedDate
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "created_at", nullable = false ,columnDefinition = "TIMESTAMP DEFAULT '2026-06-23 19:54:30'")
     private LocalDateTime createdAt;
 
     @CreatedBy
-    @Column(name = "created_by", nullable = false)
+    @Column(name = "created_by", nullable = false , columnDefinition = "BIGINT DEFAULT 1")
     private Long createdBy;
 
     @LastModifiedDate
-    @Column(name = "last_modified_at", nullable = false)
+    @Column(name = "last_modified_at", nullable = false ,columnDefinition = "TIMESTAMP DEFAULT '2026-06-23 19:54:30'")
     private LocalDateTime lastModifiedAt;
 
     @LastModifiedBy
-    @Column(name = "last_modified_by", nullable = false)
+    @Column(name = "last_modified_by", nullable = false, columnDefinition = "BIGINT DEFAULT 1")
     private Long lastModifiedBy;
-
 
     @PrePersist
     protected void onCreate() {
@@ -158,6 +156,5 @@ public class Suppliers {
         this.lastModifiedAt = LocalDateTime.now();
         this.lastModifiedBy = UserContext.getUserId();
     }
-
 
 }

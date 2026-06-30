@@ -27,8 +27,6 @@ public class GatewayHeaderAuthFilter extends OncePerRequestFilter {
         String username = request.getHeader("X-User-Name");
         String rolesHeader = request.getHeader("X-User-Roles");
 
-        System.out.println("UserName:-"+ username );
-        System.out.println("UserROle"+ rolesHeader );
 
         if (username != null && rolesHeader != null) {
 
@@ -44,6 +42,7 @@ public class GatewayHeaderAuthFilter extends OncePerRequestFilter {
 
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+
 
         filterChain.doFilter(request, response);
     }
