@@ -9,7 +9,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class MasterDataApplication {
 
 	public static void main(String[] args) {
+
 		SpringApplication.run(MasterDataApplication.class, args);
+
 	}
 
 }

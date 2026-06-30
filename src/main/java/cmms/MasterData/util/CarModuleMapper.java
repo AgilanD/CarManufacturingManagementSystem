@@ -3,7 +3,9 @@ package cmms.MasterData.util;
 import cmms.MasterData.Dto.CarModuleRequestDto;
 import cmms.MasterData.Dto.CarModuleResponseDto;
 import cmms.MasterData.entity.CarModule;
+import org.springframework.stereotype.Component;
 
+@Component
 public class CarModuleMapper {
 
     public  CarModule CarModuleRequesttoCarModule(CarModuleRequestDto carModuleRequestDto){
