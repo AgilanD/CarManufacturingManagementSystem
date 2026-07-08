@@ -10,21 +10,22 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.SoftDelete;
+import org.hibernate.annotations.SoftDeleteType;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 @Entity
 @Table(name = "suppliers")
-@EntityListeners(AuditingEntityListener.class)
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SoftDelete(strategy = SoftDeleteType.DELETED, columnName = "is_deleted")
 public class Suppliers {
 
     @Id
@@ -47,9 +48,11 @@ public class Suppliers {
     private Integer rating;
 
     @Pattern(
-            regexp = "^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$",
+            regexp = "^\\d{2}[A-Z]{5}\\d{4}[A-Z][A-Z\\d]Z[A-Z\\d]$",
             message = "Invalid 15-character Indian GSTIN format"
     )
+    private String gstin;
+
     @Column(name = "gst_number", length = 15)
     private String gstNumber;
 

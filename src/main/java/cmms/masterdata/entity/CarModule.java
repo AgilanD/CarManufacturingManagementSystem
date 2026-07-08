@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.JdbcTypeCode;
+import org.hibernate.annotations.SoftDelete;
+import org.hibernate.annotations.SoftDeleteType;
 import org.hibernate.type.SqlTypes;
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -24,6 +26,7 @@ import java.time.ZoneId;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
+@SoftDelete(strategy = SoftDeleteType.DELETED, columnName = "is_deleted")
 public class CarModule {
 
     @Id
@@ -61,7 +64,6 @@ public class CarModule {
     private LocalDateTime createdAt;
 
     @CreatedBy
-
     @Column(name = "created_by", nullable = false, columnDefinition = "BIGINT DEFAULT 1")
     private Long createdBy;
 
@@ -72,7 +74,6 @@ public class CarModule {
     @LastModifiedBy
     @Column(name = "last_modified_by", nullable = false, columnDefinition = "BIGINT DEFAULT 1")
     private Long lastModifiedBy;
-
 
 
     @PrePersist

@@ -19,14 +19,9 @@ public class PlantsResponseDto {
     private String location;
     private Integer capacityPerDay;
     private Boolean isActive;
-
-
-
-
     private LocalDateTime createdAt;
     private Long createdBy ;
     private LocalDateTime lastModifiedAt;
     private Long lastModifiedBy ;
-
 
 }

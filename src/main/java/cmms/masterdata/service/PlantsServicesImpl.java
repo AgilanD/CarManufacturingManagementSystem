@@ -12,7 +12,7 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class PlantsServicesImpl implements PlantsService{
+public class PlantsServicesImpl implements PlantsService {
 
    private final PlantRepository plantRepository;
    private final PlantsMapper plantsMapper;
@@ -26,12 +26,30 @@ public class PlantsServicesImpl implements PlantsService{
    }
 
    public PlantsResponseDto createPlants (PlantsRequestDto plantsRequestDto){
-
-
       Plants plants = saveAll(plantsMapper.plantsRequestDtoToPlants(plantsRequestDto));
-
       return plantsMapper.plantsToPlantsResponseDto(plants);
-
    }
 
+   public PlantsResponseDto updatePlant(Long id, PlantsRequestDto plantsRequestDto) {
+      return plantRepository.findById(id)
+              .map(existingPlant -> {
+                 existingPlant.setName(plantsRequestDto.getName());
+                 existingPlant.setCapacityPerDay(plantsRequestDto.getCapacityPerDay());
+                 existingPlant.setCode(plantsRequestDto.getCode());
+                 existingPlant.setLocation(plantsRequestDto.getLocation());
+                 return plantRepository.save(existingPlant);
+              })
+              .map(plantsMapper::plantsToPlantsResponseDto)
+              .orElseThrow(() -> new RuntimeException("Plant not found with id: " + id));
+   }
+
+   public PlantsResponseDto softDeletePlant(Long id) {
+      return plantRepository.findById(id)
+              .map(existingPlant -> {
+                 existingPlant.setIsActive(false);
+                 return plantRepository.save(existingPlant);
+              })
+              .map(plantsMapper::plantsToPlantsResponseDto)
+              .orElseThrow(() -> new RuntimeException("Plant not found with id: " + id));
+   }
 }

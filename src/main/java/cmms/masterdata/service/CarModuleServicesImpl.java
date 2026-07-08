@@ -18,8 +18,10 @@ public class CarModuleServicesImpl implements CarModuleService{
 
     private final CarModuleMapper carModuleMapper;
 
-    public List<CarModule> getAllCarModule(){
-        return carRepository.findAll();
+    public List<CarModuleResponseDto> getAllCarModule() {
+        List<CarModule> carModules = carRepository.findAll();
+        return carModules.stream()
+                .map(carModuleMapper::customerToCustomerResponseDto).toList();
     }
 
     public CarModule addCar (CarModule carModule){
