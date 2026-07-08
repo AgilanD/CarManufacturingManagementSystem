@@ -25,22 +25,9 @@ public class CarModuleResponseDto {
     private String colorOptions;
     private LocalDate launchDate;
     private Boolean isActive;
-
-
-
-
-
     private LocalDateTime createdAt;
-
     private Long createdBy;
-
     private LocalDateTime lastModifiedAt;
-
     private Long lastModifiedBy;
-
-
-
-
-
 
 }

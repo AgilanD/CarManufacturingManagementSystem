@@ -12,6 +12,6 @@ public interface CarModuleService {
 
     public CarModuleResponseDto createCarModule (CarModuleRequestDto carModuleRequestDto);
 
-    public List<CarModule> getAllCarModule();
+    public List<CarModuleResponseDto> getAllCarModule();
 
 }

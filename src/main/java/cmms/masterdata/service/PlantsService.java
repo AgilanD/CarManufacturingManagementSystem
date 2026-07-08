@@ -14,5 +14,7 @@ public interface PlantsService {
 
     public PlantsResponseDto createPlants (PlantsRequestDto plantsRequestDto);
 
+    PlantsResponseDto updatePlant(Long id, PlantsRequestDto plantsRequestDto);
 
+    PlantsResponseDto softDeletePlant(Long id);
 }

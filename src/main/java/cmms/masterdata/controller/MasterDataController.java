@@ -4,7 +4,6 @@ import cmms.masterdata.dto.*;
 import cmms.masterdata.entity.Plants;
 import cmms.masterdata.entity.Suppliers;
 import cmms.masterdata.service.CarModuleService;
-import cmms.masterdata.entity.CarModule;
 import cmms.masterdata.service.PlantsService;
 import cmms.masterdata.service.SuppilerService;
 import cmms.masterdata.usercontext.RequireRole;
@@ -27,20 +26,13 @@ public class MasterDataController {
 
     private final SuppilerService supplierService;
 
-    @GetMapping("/Checking")
-    public ResponseEntity<String> checkStatus() {
-        return ResponseEntity.ok("Checking From the MasterData");
-    }
-
-
-    @PostMapping("/AddCustomer")
+    @PostMapping("/AddCarModule")
     public CarModuleResponseDto addCustomer(@RequestBody CarModuleRequestDto carModuleRequestDtoRequestDto){
         return carModuleService.createCarModule(carModuleRequestDtoRequestDto);
     }
 
-
     @GetMapping("/GetAllCarModule")
-    public ResponseEntity<List<CarModule>> getAllCarModules() {
+    public ResponseEntity<List<CarModuleResponseDto>> getAllCarModules() {
         return ResponseEntity.ok(carModuleService.getAllCarModule());
     }
 
@@ -53,6 +45,21 @@ public class MasterDataController {
     @PostMapping("/AddPlants")
     public PlantsResponseDto addCustomer(@RequestBody PlantsRequestDto plantsRequestDto){
         return plantsservice.createPlants(plantsRequestDto);
+    }
+
+    @PutMapping("/UpdatePlants/{id}")
+    public ResponseEntity<PlantsResponseDto> updatePlant(
+            @PathVariable Long id,
+            @RequestBody PlantsRequestDto plantsRequestDto) {
+
+        PlantsResponseDto updatedPlant = plantsservice.updatePlant(id, plantsRequestDto);
+        return ResponseEntity.ok(updatedPlant);
+    }
+
+    @DeleteMapping("DeletePlants/{id}")
+    public ResponseEntity<PlantsResponseDto> softDeletePlant(@PathVariable Long id) {
+        PlantsResponseDto deletedPlant = plantsservice.softDeletePlant(id);
+        return ResponseEntity.ok(deletedPlant);
     }
 
     @GetMapping("/GetAllSuppliers")
