@@ -8,12 +8,15 @@ import java.util.List;
 
 public interface SuppilerService {
 
-    public SupplierResponseDto createSuppliers (SupplierRequestDto suppliersRequestDto);
+    SupplierResponseDto createSuppliers(SupplierRequestDto suppliersRequestDto);
 
-    public Suppliers saveAll(Suppliers suppliers);
+    Suppliers saveAll(Suppliers suppliers);
 
-    public Suppliers getBySuppliersId(Long id);
+    Suppliers getBySuppliersId(Long id);
 
-    public List<Suppliers> getAllSuppliers();
+    List<Suppliers> getAllSuppliers();
 
+    SupplierResponseDto updateSupplier(Long id, SupplierRequestDto supplierRequestDto);
+
+    void deleteSupplier(Long id);
 }

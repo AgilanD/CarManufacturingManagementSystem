@@ -17,4 +17,6 @@ public interface PlantsService {
     PlantsResponseDto updatePlant(Long id, PlantsRequestDto plantsRequestDto);
 
     PlantsResponseDto softDeletePlant(Long id);
+
+    PlantsResponseDto getPlantById(Long id);
 }
