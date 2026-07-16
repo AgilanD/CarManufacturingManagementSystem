@@ -8,10 +8,16 @@ import java.util.List;
 
 public interface CarModuleService {
 
-    public CarModule addCar (CarModule carModule);
+    CarModule addCar (CarModule carModule);
 
-    public CarModuleResponseDto createCarModule (CarModuleRequestDto carModuleRequestDto);
+    CarModuleResponseDto createCarModule (CarModuleRequestDto carModuleRequestDto);
 
-    public List<CarModuleResponseDto> getAllCarModule();
+    List<CarModuleResponseDto> getAllCarModule();
 
+    CarModuleResponseDto getCarModuleById(Long id);
+
+    CarModuleResponseDto updateCarModule(Long id, CarModuleRequestDto carModuleRequestDto);
+
+    void deleteCarModule(Long id);
 }
+
